@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PDF Viewer</title>
+    <!-- Favicon link tag - Update 'favicon.ico' with your chosen icon file -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -29,7 +31,7 @@
         }
         
         .download-btn {
-            background-color: #4CAF50;
+            background-color: #02116e;
             color: white;
             padding: 8px 15px;
             border: none;
@@ -43,7 +45,7 @@
         }
         
         .download-btn:hover {
-            background-color: #45a049;
+            background-color: #010d53;
         }
         
         .pdf-container {
@@ -62,18 +64,13 @@
     <div class="header">
         <div class="title">PDF Document</div>
         <button class="download-btn" id="download-button">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M8 15a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 1 0v11a.5.5 0 0 1-.5.5z"/>
-                <path d="M8 3.5a.5.5 0 0 0-.5-.5h-2a.5.5 0 0 0 0 1h2a.5.5 0 0 0 .5-.5zm-4 0a.5.5 0 0 0-.5-.5h-2a.5.5 0 0 0 0 1h2a.5.5 0 0 0 .5-.5zm8 0a.5.5 0 0 0-.5-.5h-2a.5.5 0 0 0 0 1h2a.5.5 0 0 0 .5-.5zm-4 0a.5.5 0 0 0-.5-.5H2a.5.5 0 0 0 0 1h5.5a.5.5 0 0 0 .5-.5z"/>
-                <path d="M7.646 11.854L8 11.5l.354.354a.5.5 0 0 0 .708-.708l-1.5-1.5a.5.5 0 0 0-.708 0l-1.5 1.5a.5.5 0 0 0 .708.708L7.5 11.5v3.975a.5.5 0 0 0 1 0V11.5z"/>
-            </svg>
-            Download PDF
+            Download
         </button>
     </div>
     
     <div class="pdf-container">
         <!-- The PDF will be embedded here -->
-        <iframe id="pdf-viewer" src="sample.pdf" type="application/pdf"></iframe>
+        <iframe id="pdf-viewer" src="justin_antinarella.pdf" type="application/pdf"></iframe>
     </div>
 
     <script>
@@ -92,13 +89,28 @@
             // Create a temporary anchor element
             const downloadLink = document.createElement('a');
             downloadLink.href = pdfUrl;
-            downloadLink.download = "document.pdf"; // Default file name for download
+            
+            // Extract the original file name from the URL path
+            const fileName = pdfUrl.split('/').pop();
+            downloadLink.download = fileName; // Preserve the original file name
             
             // Trigger the download
             document.body.appendChild(downloadLink);
             downloadLink.click();
             document.body.removeChild(downloadLink);
         });
+
+        // Function to use a favicon if the preferred format is not supported
+        function setFavicon(iconPath) {
+            const link = document.querySelector("link[rel*='icon']") || document.createElement('link');
+            link.type = 'image/x-icon';
+            link.rel = 'shortcut icon';
+            link.href = iconPath;
+            document.getElementsByTagName('head')[0].appendChild(link);
+        }
+        
+        // You can call this function to set your favicon dynamically if needed
+        // setFavicon('path/to/your/favicon.ico');
     </script>
 </body>
 </html>

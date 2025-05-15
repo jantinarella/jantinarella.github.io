@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Option 2: Geometric J -->
+  <rect x="15" y="15" width="70" height="70" rx="5" fill="#02116e"/>
+  <path d="M65,25 L65,65 Q65,75 55,75 L45,75 Q35,75 35,65" fill="none" stroke="white" stroke-width="8" stroke-linecap="square"/>
+  <circle cx="65" cy="25" r="4" fill="white"/>
+</svg>
